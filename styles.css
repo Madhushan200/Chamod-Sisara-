@@ -2372,7 +2372,7 @@ button {
 }
 
 /* ==========================================================================
-   WELCOME SCREEN OVERLAY & OPEN BUTTON STYLE (MOBILE SCREEN LAYOUT SPEC)
+   WELCOME SCREEN OVERLAY & OPEN BUTTON STYLE (MOBILE SCREEN LAYOUT SPEC - LAVENDER ACCENTS)
    ========================================================================== */
 .preloader-overlay {
     position: fixed;
@@ -2380,7 +2380,7 @@ button {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle, #FAF4F3 0%, #EFE1DF 100%);
+    background: radial-gradient(circle, #FCF9FE 0%, #E9DEF5 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2402,7 +2402,7 @@ button {
     max-width: 420px;
     width: 90%;
     text-align: center;
-    box-shadow: 0 25px 50px -15px rgba(120, 80, 80, 0.15);
+    box-shadow: 0 25px 50px -15px rgba(88, 63, 114, 0.12);
     animation: welcomeFloat 6s ease-in-out infinite;
 }
 
@@ -2416,8 +2416,8 @@ button {
 }
 
 .welcome-badge {
-    background: #F3E5E4;
-    color: #A26A69;
+    background: var(--accent-lavender-light);
+    color: var(--accent-lavender-dark);
     padding: 8px 20px;
     border-radius: 20px;
     font-family: var(--font-sans);
@@ -2432,7 +2432,7 @@ button {
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 3px;
-    color: #6E5D6A;
+    color: var(--text-muted);
     margin-bottom: 1.5rem;
 }
 
@@ -2446,14 +2446,14 @@ button {
 .welcome-name {
     font-family: var(--font-cursive);
     font-size: 4.2rem;
-    color: #3A2A38;
+    color: var(--text-primary);
     line-height: 0.85;
 }
 
 .welcome-ampersand {
     font-family: var(--font-cursive);
     font-size: 2.8rem;
-    color: #B87B79;
+    color: var(--accent-lavender);
     margin: 8px 0;
     line-height: 0.8;
 }
@@ -2469,28 +2469,28 @@ button {
 .welcome-divider-dots .dot {
     width: 5px;
     height: 5px;
-    background-color: #B87B79;
+    background-color: var(--accent-lavender);
     border-radius: 50%;
 }
 
 .welcome-divider-dots .line {
     width: 60px;
     height: 1px;
-    background-color: rgba(184, 123, 121, 0.4);
+    background-color: rgba(157, 132, 183, 0.4);
 }
 
 .welcome-invite-text {
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    color: #6E5D6A;
+    color: var(--text-muted);
     margin: 0 auto 2.5rem auto;
     line-height: 1.65;
     max-width: 320px;
 }
 
-/* Luxury Rose-Plum Open Button Widget */
+/* Luxury Lavender Open Button Widget */
 .btn-open-widget {
-    background: #AF6E6C;
+    background: var(--accent-lavender-dark);
     color: var(--text-white);
     border: none;
     border-radius: 35px;
@@ -2501,7 +2501,7 @@ button {
     letter-spacing: 2px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 8px 24px rgba(175, 110, 108, 0.25);
+    box-shadow: 0 8px 24px rgba(88, 63, 114, 0.25);
     transition: var(--transition-fast);
 }
 
@@ -2522,8 +2522,8 @@ button {
 
 .btn-open-widget:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 28px rgba(175, 110, 108, 0.4);
-    background: #A05F5D;
+    box-shadow: 0 12px 28px rgba(88, 63, 114, 0.4);
+    background: var(--accent-lavender);
 }
 
 .btn-open-widget:active {

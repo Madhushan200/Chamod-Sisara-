@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         dayName: "Friday",
         dayNum: "23",
         monthYear: "October 2026",
-        weddingTime: "5:00 PM onwards",
+        weddingTime: "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)",
         rsvpDeadline: "15 September 2026",
         phoneChamod: "071-3564272",
         phoneSisara: "071-9694860",
@@ -51,6 +51,12 @@ We would be honoured to have you there when it begins."`
 
     // Load configs from LocalStorage or fallback to default
     let configs = JSON.parse(localStorage.getItem("wedding_invitation_configs")) || DEFAULT_CONFIGS;
+
+    // Force new ceremony time update for existing configurations
+    if (configs && configs.weddingTime === "5:00 PM onwards") {
+        configs.weddingTime = "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)";
+        localStorage.setItem("wedding_invitation_configs", JSON.stringify(configs));
+    }
 
     // Ensure the Google Sheets Web App URL is populated if it was previously empty
     if (configs && !configs.googleSheetUrl && DEFAULT_CONFIGS.googleSheetUrl) {
@@ -477,50 +483,45 @@ We would be honoured to have you there when it begins."`
 
             // Collect form data
             const formData = new FormData(rsvpForm);
-            const rsvpData = {
-                guestName: formData.get("guestName"),
-                guestContact: formData.get("guestContact"),
-                attending: formData.get("attending"),
-                guestCount: formData.get("attending") === "yes" ? formData.get("guestCount") : "0",
-                diet: formData.get("attending") === "yes" ? formData.get("diet") : "n/a",
-                guestMessage: formData.get("guestMessage")
-            };
+            const guestName = formData.get("guestName");
+            const attending = formData.get("attending");
 
-            // Save to array
+            // Construct WhatsApp message
+            let message = "";
+            if (attending === "yes") {
+                message = `Hi Chamod & Sisara, I am ${guestName}. I am delighted to confirm that I will be attending your wedding! 🌸`;
+            } else {
+                message = `Hi Chamod & Sisara, I am ${guestName}. I am writing to let you know that I will not be able to attend your wedding. Sending you my best wishes! 🤍`;
+            }
+
+            // Encode message and create WhatsApp link
+            const encodedText = encodeURIComponent(message);
+            const waUrl = `https://wa.me/94776741914?text=${encodedText}`;
+
+            // Save locally just in case (optional, keeps local list)
+            const rsvpData = {
+                guestName: guestName,
+                attending: attending,
+                dateAdded: new Date().toISOString()
+            };
             rsvps.push(rsvpData);
             localStorage.setItem("wedding_rsvp_list", JSON.stringify(rsvps));
 
-            // Optional Google Sheet Integration
-            if (configs.googleSheetUrl && configs.googleSheetUrl.trim() !== "") {
-                fetch(configs.googleSheetUrl, {
-                    method: "POST",
-                    mode: "no-cors",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(rsvpData)
-                }).then(() => {
-                    console.log("RSVP submitted to Google Sheet successfully!");
-                }).catch(err => {
-                    console.error("Error submitting to Google Sheet: ", err);
-                });
-            }
+            // Redirect to WhatsApp
+            window.open(waUrl, '_blank');
 
             // Show custom alert toast
-            showSweetToast(rsvpData.attending === "yes");
+            showSweetToast(attending === "yes");
 
             // Reset form
             rsvpForm.reset();
-            // Re-apply styles/classes
+            
+            // Re-apply active class to Yes radio
             document.querySelectorAll(".option-label").forEach(lbl => lbl.classList.remove("active"));
-            document.querySelector('.option-label input[value="yes"]').closest(".option-label").classList.add("active");
-            document.querySelectorAll(".diet-label").forEach(lbl => lbl.classList.remove("active"));
-            document.querySelector('.diet-label input[value="non-veg"]').closest(".diet-label").classList.add("active");
-            attendingDetails.forEach(el => el.classList.remove("hidden"));
-
-            // Refresh lists & statistics
-            renderWishesWall();
-            renderAdminDashboard();
+            const yesLabel = document.querySelector('.option-label input[value="yes"]');
+            if (yesLabel) {
+                yesLabel.closest(".option-label").classList.add("active");
+            }
         });
     }
 
@@ -607,7 +608,7 @@ We would be honoured to have you there when it begins."`
         );
     }
 
-    renderWishesWall();
+    // renderWishesWall(); // Removed for production
 
     // ---------------------------------------------------------
     // 11. ADD TO CALENDAR (.ICS EVENT BUILDER)
@@ -620,9 +621,9 @@ We would be honoured to have you there when it begins."`
             const targetDay = configs.dayNum.padStart(2, '0');
 
             // Format date for ICS: YYYYMMDDTHHMMSS
-            // Wedding starts at 5:00 PM (17:00) and ends at 10:00 PM (22:00)
-            const startDate = `${targetYear}${targetMonth}${targetDay}T170000`;
-            const endDate = `${targetYear}${targetMonth}${targetDay}T220000`;
+            // Wedding starts at 10:00 AM (10:00) and ends at 03:30 PM (15:30)
+            const startDate = `${targetYear}${targetMonth}${targetDay}T100000`;
+            const endDate = `${targetYear}${targetMonth}${targetDay}T153000`;
 
             const title = "Wedding celebration of Chamod & Sisara";
             const description = "You are cordially invited to celebrate the union of Chamod and Sisara. See you there!";

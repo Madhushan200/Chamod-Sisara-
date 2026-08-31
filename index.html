@@ -76,7 +76,6 @@
             <a href="#countdown-sec" class="nav-link">Countdown</a>
             <a href="#details" class="nav-link">Wedding</a>
             <a href="#rsvp" class="nav-link">RSVP</a>
-            <a href="#guestbook" class="nav-link">Guestbook</a>
         </nav>
         <div class="nav-rsvp-btn">
             <a href="#rsvp" class="btn-luxury-sm">RSVP Now</a>
@@ -98,7 +97,6 @@
             <a href="#countdown-sec" class="mobile-nav-link">Countdown</a>
             <a href="#details" class="mobile-nav-link">Wedding Details</a>
             <a href="#rsvp" class="mobile-nav-link">RSVP</a>
-            <a href="#guestbook" class="mobile-nav-link">Guestbook</a>
         </nav>
     </div>
 
@@ -289,8 +287,8 @@
                     <div class="card-ornament"></div>
                     <i data-lucide="clock" class="card-icon"></i>
                     <h4>The Time</h4>
-                    <p class="detail-val" id="display-time">5:00 PM onwards</p>
-                    <p class="detail-label">Reception Commencement</p>
+                    <p class="detail-val" id="display-time">10:00 AM - 03:30 PM</p>
+                    <p class="detail-label">(Poruwa Ceremony 10:00 AM)</p>
                     <div class="card-action">
                         <span class="time-highlight">Dress Code: Formal Elegant</span>
                     </div>
@@ -336,93 +334,36 @@
             <!-- RSVP Form Container -->
             <div class="rsvp-form-container glass-card">
                 <form id="wedding-rsvp-form">
-                    <div class="form-grid">
+                    <div class="form-grid single-col-form">
                         <div class="form-group">
                             <label for="guest-name">Your Full Name <span class="req">*</span></label>
                             <input type="text" id="guest-name" name="guestName" placeholder="Enter your name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="guest-contact">Phone Number / Email <span class="req">*</span></label>
-                            <input type="text" id="guest-contact" name="guestContact" placeholder="Enter contact info" required>
-                        </div>
-
-                        <div class="form-group">
                             <label>Are You Attending? <span class="req">*</span></label>
                             <div class="attendance-options">
                                 <label class="option-label active">
                                     <input type="radio" name="attending" value="yes" checked required>
                                     <span class="custom-radio"><i data-lucide="check"></i></span>
-                                    <span>Attending with Joy</span>
+                                    <span>Yes, I will attend</span>
                                 </label>
                                 <label class="option-label">
                                     <input type="radio" name="attending" value="no">
                                     <span class="custom-radio"><i data-lucide="x"></i></span>
-                                    <span>Declining with Regret</span>
+                                    <span>No, I cannot attend</span>
                                 </label>
                             </div>
-                        </div>
-
-                        <div class="form-group attending-details">
-                            <label for="guest-count">Number of Guests <span class="req">*</span></label>
-                            <select id="guest-count" name="guestCount">
-                                <option value="1">1 Person</option>
-                                <option value="2">2 Persons</option>
-                                <option value="3">3 Persons</option>
-                                <option value="4">4 Persons</option>
-                                <option value="5">5 Persons</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group attending-details">
-                            <label>Dietary Preferences</label>
-                            <div class="diet-options">
-                                <label class="diet-label">
-                                    <input type="radio" name="diet" value="veg">
-                                    <span>Vegetarian</span>
-                                </label>
-                                <label class="diet-label active">
-                                    <input type="radio" name="diet" value="non-veg" checked>
-                                    <span>Non-Vegetarian</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="form-group full-width">
-                            <label for="guest-message">Send Your Wishes / Congratulatory Note</label>
-                            <textarea id="guest-message" name="guestMessage" rows="4" placeholder="Write your warm wishes here..."></textarea>
                         </div>
                     </div>
 
-                    <div class="form-submit text-center">
+                    <div class="form-submit text-center" style="margin-top: 2rem;">
                         <button type="submit" class="btn-luxury gold-glow">
-                            <span>RSVP NOW</span>
+                            <span>SEND RSVP VIA WHATSAPP</span>
                             <span class="btn-ripple"></span>
                         </button>
                     </div>
                 </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- ================= GUESTBOOK WALL ================= -->
-    <section id="guestbook" class="guestbook-section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="subtitle">Wishes & Love</span>
-                <h2 class="section-title">Virtual Guestbook</h2>
-                <div class="title-divider"></div>
-            </div>
-
-            <div class="guestbook-container container-sm">
-                <!-- Wishes Wall -->
-                <div class="wishes-wall" id="wishes-wall">
-                    <!-- Dynamic wishes cards injected here -->
-                    <div class="no-wishes-placeholder">
-                        <i data-lucide="message-square" class="placeholder-icon"></i>
-                        <p>No wishes yet. Be the first to leave a congratulatory message below!</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
