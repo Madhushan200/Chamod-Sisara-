@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+  }
+
+  body {
+    @apply bg-[#F8FAFC] text-slate-900 antialiased font-sans selection:bg-blue-600 selection:text-white;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-xl font-bold text-xs text-white bg-blue-600 hover:bg-blue-700 shadow-sm transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply px-3.5 py-2 rounded-xl font-semibold text-xs text-slate-700 bg-white hover:bg-slate-50 border border-slate-200/90 shadow-sm transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 rounded-xl font-bold text-xs text-white bg-red-600 hover:bg-red-700 shadow-sm transition-all inline-flex items-center justify-center gap-2 cursor-pointer active:scale-[0.98] disabled:opacity-50;
+  }
+
+  .btn-outline {
+    @apply px-3.5 py-2 rounded-xl font-semibold text-xs text-blue-600 hover:bg-blue-50 border border-blue-200 transition-all inline-flex items-center justify-center gap-1.5 cursor-pointer;
+  }
+
+  .card-base {
+    @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow p-5;
+  }
+
+  /* Priority Badges */
+  .badge-p1 {
+    @apply bg-red-50 text-red-700 border border-red-200 font-bold px-2.5 py-1 rounded-lg text-xs inline-flex items-center gap-1.5 shadow-sm;
+  }
+
+  .badge-p2 {
+    @apply bg-orange-50 text-orange-700 border border-orange-200 font-bold px-2.5 py-1 rounded-lg text-xs inline-flex items-center gap-1.5;
+  }
+
+  .badge-p3 {
+    @apply bg-amber-50 text-amber-700 border border-amber-200 font-semibold px-2.5 py-1 rounded-lg text-xs inline-flex items-center gap-1.5;
+  }
+
+  .badge-p4 {
+    @apply bg-blue-50 text-blue-700 border border-blue-200 font-medium px-2.5 py-1 rounded-lg text-xs inline-flex items-center gap-1.5;
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2s infinite ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Slim Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}
