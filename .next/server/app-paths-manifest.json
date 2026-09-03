@@ -1,0 +1,8 @@
+{
+  "/executive/page": "app/executive/page.js",
+  "/login/page": "app/login/page.js",
+  "/reports/page": "app/reports/page.js",
+  "/executive/report/page": "app/executive/report/page.js",
+  "/admin/page": "app/admin/page.js",
+  "/engineering/page": "app/engineering/page.js"
+}

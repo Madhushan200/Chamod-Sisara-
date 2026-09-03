@@ -1,0 +1,11 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/engineering/page": "/engineering",
+  "/admin/page": "/admin",
+  "/login/page": "/login",
+  "/executive/report/page": "/executive/report",
+  "/executive/page": "/executive",
+  "/page": "/",
+  "/reports/page": "/reports",
+  "/engineering/[id]/page": "/engineering/[id]"
+}
