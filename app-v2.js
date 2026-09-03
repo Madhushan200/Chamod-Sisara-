@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         rsvpDeadline: "15 September 2026",
         phoneChamod: "071-3564272",
         phoneSisara: "071-9694860",
-        musicUrl: "https://youtu.be/Mfxz8Tjvg5Q?si=JhfjKEVE5besf7Va",
+        musicUrl: "https://youtu.be/rtOvBOTyX00?si=Eq66M_EZTT9_JG4_",
         googleSheetUrl: "https://script.google.com/macros/s/AKfycbyAjncrEHcvhy0Mpe0mWIHrpBScR8iK2GXicohj0mkcFgLu3bdTRBv79CH7mzhYqtVv/exec",
         venueHero: "Grand Imperial Ballroom, Lavendro Garden Hotel",
         venueDetail: "Grand Imperial Ballroom",
@@ -51,9 +51,10 @@ We would be honoured to have you there when it begins."`
     // Load configs from LocalStorage or fallback to default
     let configs = JSON.parse(localStorage.getItem("wedding_invitation_configs")) || DEFAULT_CONFIGS;
 
-    // Force new date and Senior & Junior story update for existing cached configurations
-    if (configs && (configs.dayNum === "23" || !configs.storyText || !configs.storyText.includes("senior boy") || configs.weddingTime === "5:00 PM onwards")) {
+    // Force new date, music URL, and Senior & Junior story update for existing cached configurations
+    if (configs && (configs.dayNum === "23" || !configs.storyText || !configs.storyText.includes("senior boy") || configs.weddingTime === "5:00 PM onwards" || !configs.musicUrl || configs.musicUrl.includes("Mfxz8Tjvg5Q") || configs.musicUrl !== DEFAULT_CONFIGS.musicUrl)) {
         configs.dayNum = "02";
+        configs.musicUrl = DEFAULT_CONFIGS.musicUrl;
         configs.storyText = DEFAULT_CONFIGS.storyText;
         configs.footerQuote = DEFAULT_CONFIGS.footerQuote;
         configs.weddingTime = "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)";
