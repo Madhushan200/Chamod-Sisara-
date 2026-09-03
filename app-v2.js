@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Default configurations
     const DEFAULT_CONFIGS = {
         dayName: "Friday",
-        dayNum: "23",
+        dayNum: "02",
         monthYear: "October 2026",
         weddingTime: "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)",
         rsvpDeadline: "15 September 2026",
@@ -31,16 +31,15 @@ document.addEventListener("DOMContentLoaded", () => {
         storyText: `It all began 14 years ago...<br>
 Not with a grand plan,<br>
 Not with a perfect moment,<br>
-But with two school hearts who found each other.<br><br>
-From classroom memories,<br>
-Shared smiles,<br>
-Endless conversations,<br>
+A senior boy and a junior girl who crossed paths in the school corridors.<br><br>
+From stolen glances between classes,<br>
+Shared smiles and secret conversations,<br>
 Dreams, challenges, laughter, and countless unforgettable moments...<br><br>
-We have walked hand in hand through every season of life.<br><br>
+We have walked hand in hand as senior &amp; junior through every season of life.<br><br>
 <strong>14 years of love.<br>
 One lifetime to go. ❤️</strong>`,
         footerQuote: `"Some love stories are written in books.<br>
-Ours was written in classrooms,<br>
+Ours was written in school corridors,<br>
 in countless conversations,<br>
 through years of waiting,<br>
 and in every promise we kept.<br><br>
@@ -52,8 +51,11 @@ We would be honoured to have you there when it begins."`
     // Load configs from LocalStorage or fallback to default
     let configs = JSON.parse(localStorage.getItem("wedding_invitation_configs")) || DEFAULT_CONFIGS;
 
-    // Force new ceremony time update for existing configurations
-    if (configs && configs.weddingTime === "5:00 PM onwards") {
+    // Force new date and Senior & Junior story update for existing cached configurations
+    if (configs && (configs.dayNum === "23" || !configs.storyText || !configs.storyText.includes("senior boy") || configs.weddingTime === "5:00 PM onwards")) {
+        configs.dayNum = "02";
+        configs.storyText = DEFAULT_CONFIGS.storyText;
+        configs.footerQuote = DEFAULT_CONFIGS.footerQuote;
         configs.weddingTime = "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)";
         localStorage.setItem("wedding_invitation_configs", JSON.stringify(configs));
     }
@@ -339,8 +341,8 @@ We would be honoured to have you there when it begins."`
         const targetYear = getYear(configs.monthYear);
         const targetDay = configs.dayNum.padStart(2, '0');
         
-        // Target: Year-Month-DayT17:00:00 (5:00 PM local time)
-        const targetDateString = `${targetYear}-${targetMonth}-${targetDay}T17:00:00`;
+        // Target: Year-Month-DayT10:00:00 (10:00 AM Poruwa Ceremony)
+        const targetDateString = `${targetYear}-${targetMonth}-${targetDay}T10:00:00`;
         const targetDate = new Date(targetDateString).getTime();
 
         function updateCountdown() {
