@@ -1071,11 +1071,12 @@ button {
 
 .story-image {
     width: 100%;
+    height: auto;
     border-radius: var(--radius-luxury);
     box-shadow: var(--shadow-luxury);
     z-index: 2;
     position: relative;
-    filter: grayscale(10%) sepia(5%);
+    display: block;
 }
 
 .image-frame-gold {
