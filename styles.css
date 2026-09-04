@@ -665,13 +665,26 @@ button {
    -------------------------------------------------------------------------- */
 .hero-section {
     position: relative;
-    height: 100vh;
-    min-height: 720px;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(180deg, rgba(20, 14, 28, 0.78) 0%, rgba(65, 45, 85, 0.62) 40%, rgba(20, 14, 28, 0.92) 100%), url('assets/couple_hero_face.jpg') center 20% / cover no-repeat fixed;
+    background: linear-gradient(180deg, rgba(20, 14, 28, 0.42) 0%, rgba(65, 45, 85, 0.32) 40%, rgba(20, 14, 28, 0.58) 100%), url('assets/couple_hero_face.jpg') center 25% / cover no-repeat;
+    background-attachment: scroll;
     overflow: hidden;
+}
+
+@media (min-width: 1025px) {
+    .hero-section {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-section {
+        background-attachment: scroll !important;
+        background-position: center top !important;
+    }
 }
 
 .hero-bg-overlay {
@@ -2391,7 +2404,7 @@ button {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, rgba(20, 14, 28, 0.88) 0%, rgba(65, 45, 85, 0.8) 50%, rgba(15, 10, 22, 0.94) 100%), url('assets/couple_hero_face.jpg') center center / cover no-repeat;
+    background: linear-gradient(135deg, rgba(20, 14, 28, 0.45) 0%, rgba(65, 45, 85, 0.4) 50%, rgba(15, 10, 22, 0.55) 100%), url('assets/couple_hero_face.jpg') center center / cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2545,7 +2558,7 @@ button {
 }
 
 /* ==========================================================================
-   DESTINATION HOTEL SHOWCASE DUAL GALLERY
+   DESTINATION HOTEL SHOWCASE
    ========================================================================== */
 .venue-showcase-card {
     padding: 2.5rem !important;
@@ -2626,7 +2639,7 @@ button {
 }
 
 /* ==========================================================================
-   MOMENTS OF LOVE / BOTTOM COUPLE GALLERY
+   MOMENTS OF FOREVER - SINGLE FEATURED PHOTO
    ========================================================================== */
 .gallery-section {
     padding: 6rem 0;
@@ -2636,51 +2649,56 @@ button {
     border-bottom: 1px solid rgba(197, 168, 128, 0.2);
 }
 
-.couple-gallery-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2.2rem;
-    margin-top: 2rem;
+.couple-gallery-single {
+    max-width: 680px;
+    margin: 2rem auto 0 auto;
 }
 
-.couple-gallery-card {
-    background: rgba(255, 255, 255, 0.92);
+.featured-single-card {
+    background: rgba(255, 255, 255, 0.94);
     border: 1px solid rgba(197, 168, 128, 0.35);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(93, 75, 117, 0.12);
+    box-shadow: 0 18px 40px rgba(93, 75, 117, 0.16);
     transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
 }
 
-.couple-gallery-card:hover {
+.featured-single-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 22px 45px rgba(93, 75, 117, 0.2), 0 0 20px rgba(197, 168, 128, 0.35);
+    box-shadow: 0 25px 50px rgba(93, 75, 117, 0.24), 0 0 25px rgba(197, 168, 128, 0.35);
 }
 
-.couple-img-wrap {
+.featured-single-wrap {
     position: relative;
-    height: 400px;
+    height: 420px;
     overflow: hidden;
     background: #2A1D37;
 }
 
-.couple-img {
+.featured-single-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.7s ease;
 }
 
-.couple-gallery-card:hover .couple-img {
-    transform: scale(1.06);
+.featured-single-card:hover .featured-single-wrap img {
+    transform: scale(1.05);
+}
+
+.couple-img-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 30px rgba(42, 29, 55, 0.3);
 }
 
 .couple-card-caption {
-    padding: 1.5rem 1.8rem;
+    padding: 1.6rem 2rem;
     text-align: center;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.96);
     border-top: 1px solid rgba(197, 168, 128, 0.25);
 }
 
@@ -2688,37 +2706,74 @@ button {
     font-family: var(--font-body);
     font-style: italic;
     color: var(--text-primary);
-    font-size: 0.95rem;
+    font-size: 1.02rem;
     margin-bottom: 0.6rem;
     line-height: 1.5;
 }
 
 .caption-tag {
     font-family: var(--font-sans);
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--accent-lavender-dark);
     font-weight: 600;
 }
 
+/* ==========================================================================
+   FOOTER CLOSING COUPLE PHOTO
+   ========================================================================== */
+.footer-couple-photo-wrapper {
+    margin: 0 auto 3rem auto;
+    max-width: 580px;
+}
+
+.footer-couple-photo-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(157, 132, 183, 0.2);
+    transition: var(--transition-smooth);
+    background: #1e142a;
+}
+
+.footer-couple-photo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55), 0 0 35px rgba(197, 168, 128, 0.35);
+}
+
+.footer-couple-img {
+    width: 100%;
+    height: auto;
+    max-height: 440px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.footer-couple-photo-card:hover .footer-couple-img {
+    transform: scale(1.03);
+}
+
+.footer-photo-glow {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    box-shadow: inset 0 0 35px rgba(20, 14, 28, 0.5);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .hotel-gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-    }
-    
-    .hotel-gallery-img-wrap {
-        height: 200px;
+    .featured-ballroom-wrap {
+        height: 220px !important;
     }
 
-    .couple-gallery-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .featured-single-wrap {
+        height: 300px;
     }
 
-    .couple-img-wrap {
-        height: 320px;
+    .footer-couple-img {
+        max-height: 320px;
     }
 }

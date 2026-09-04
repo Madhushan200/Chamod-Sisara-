@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         dayName: "Friday",
         dayNum: "02",
         monthYear: "October 2026",
-        weddingTime: "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)",
-        rsvpDeadline: "15 September 2026",
+        weddingTime: "10:00 AM - 03:30 PM",
+        rsvpDeadline: "17 September 2026",
         phoneChamod: "071-3564272",
         phoneSisara: "071-9694860",
         musicUrl: "https://youtu.be/rtOvBOTyX00?si=Eq66M_EZTT9_JG4_",
@@ -51,13 +51,14 @@ We would be honoured to have you there when it begins."`
     // Load configs from LocalStorage or fallback to default
     let configs = JSON.parse(localStorage.getItem("wedding_invitation_configs")) || DEFAULT_CONFIGS;
 
-    // Force new date, music URL, and Senior & Junior story update for existing cached configurations
-    if (configs && (configs.dayNum === "23" || !configs.storyText || !configs.storyText.includes("senior boy") || configs.weddingTime === "5:00 PM onwards" || !configs.musicUrl || configs.musicUrl.includes("Mfxz8Tjvg5Q") || configs.musicUrl !== DEFAULT_CONFIGS.musicUrl)) {
+    // Force new date, music URL, RSVP deadline, time format, and Senior & Junior story update for existing cached configurations
+    if (configs && (configs.dayNum === "23" || !configs.storyText || !configs.storyText.includes("senior boy") || configs.weddingTime === "5:00 PM onwards" || configs.weddingTime.includes("Poruwa") || configs.rsvpDeadline === "15 September 2026" || !configs.musicUrl || configs.musicUrl.includes("Mfxz8Tjvg5Q") || configs.musicUrl !== DEFAULT_CONFIGS.musicUrl)) {
         configs.dayNum = "02";
         configs.musicUrl = DEFAULT_CONFIGS.musicUrl;
         configs.storyText = DEFAULT_CONFIGS.storyText;
         configs.footerQuote = DEFAULT_CONFIGS.footerQuote;
-        configs.weddingTime = "10:00 AM - 03:30 PM (Poruwa Ceremony 10:00 AM)";
+        configs.weddingTime = "10:00 AM - 03:30 PM";
+        configs.rsvpDeadline = "17 September 2026";
         localStorage.setItem("wedding_invitation_configs", JSON.stringify(configs));
     }
 
