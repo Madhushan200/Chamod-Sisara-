@@ -2812,120 +2812,59 @@ button {
 }
 
 /* ==========================================================================
-   DODOZ CREATIONS CORNER WATERMARK BADGE & FOOTER CREDIT
+   DODOZ CREATIONS FOOTER BOTTOM-RIGHT CORNER BRAND LOGO
    ========================================================================== */
-.dodoz-floating-mark {
-    position: fixed;
-    bottom: 6.2rem;
-    right: 2rem;
-    z-index: 98;
-    transition: var(--transition-smooth);
-}
-
-.dodoz-mark-pill {
+.dodoz-footer-brand-link {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(30, 20, 42, 0.88);
-    border: 1px solid rgba(197, 168, 128, 0.5);
-    border-radius: 30px;
-    padding: 7px 14px 7px 12px;
-    color: var(--text-white);
-    font-family: var(--font-sans);
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    box-shadow: 0 8px 24px rgba(15, 10, 22, 0.45), 0 0 15px rgba(197, 168, 128, 0.2);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(197, 168, 128, 0.35);
+    border-radius: 28px;
+    padding: 6px 14px 6px 14px;
     transition: var(--transition-fast);
     text-decoration: none;
+    backdrop-filter: blur(10px);
 }
 
-.dodoz-mark-pill:hover {
+.dodoz-footer-brand-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(197, 168, 128, 0.8);
     transform: translateY(-2px);
-    background: rgba(45, 30, 62, 0.95);
-    border-color: rgba(197, 168, 128, 0.85);
-    box-shadow: 0 12px 30px rgba(15, 10, 22, 0.6), 0 0 22px rgba(197, 168, 128, 0.4);
-    color: var(--accent-gold-light);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(197, 168, 128, 0.3);
 }
 
-.dodoz-pill-icon {
-    font-size: 0.8rem;
-    animation: pulse 2.5s infinite ease-in-out;
+.dodoz-credit-label {
+    font-family: var(--font-sans);
+    font-size: 0.74rem;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    font-weight: 500;
 }
 
-.dodoz-pill-text {
-    color: #FFFFFF;
-    font-weight: 600;
-}
-
-.dodoz-pill-wa {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    background: #25D366;
-    color: #FFFFFF;
-    border-radius: 50%;
-    margin-left: 2px;
-    box-shadow: 0 2px 8px rgba(37, 211, 102, 0.4);
+.dodoz-logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
+    vertical-align: middle;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.35));
     transition: transform 0.3s ease;
 }
 
-.dodoz-pill-wa svg {
-    width: 12px;
-    height: 12px;
+.dodoz-footer-brand-link:hover .dodoz-logo-img {
+    transform: scale(1.08);
 }
 
-.dodoz-mark-pill:hover .dodoz-pill-wa {
-    transform: scale(1.15);
-}
-
-/* Footer Credit Link */
-.dodoz-footer-credit {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
-    color: var(--text-light);
-    transition: var(--transition-fast);
-    text-decoration: none;
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(197, 168, 128, 0.2);
-}
-
-.dodoz-footer-credit:hover {
-    color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(197, 168, 128, 0.5);
-    transform: translateY(-1px);
-}
-
-.dodoz-brand-gold {
-    color: var(--accent-gold-light);
-    font-weight: 600;
-}
-
-.dodoz-wa-mini {
-    width: 14px;
-    height: 14px;
-    color: #25D366;
-}
-
-/* Mobile Responsive */
 @media (max-width: 768px) {
-    .dodoz-floating-mark {
-        bottom: 5.4rem;
-        right: 1.2rem;
+    .developer-credit {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        gap: 1.2rem;
     }
 
-    .dodoz-mark-pill {
-        font-size: 0.7rem;
-        padding: 5px 10px 5px 9px;
+    .dodoz-footer-brand-link {
+        margin: 0 auto;
     }
 }
